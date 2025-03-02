@@ -2,162 +2,172 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <title>portfolio</title>
   <link rel="stylesheet" href="css/styles.css">
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css">
 
 </head>
 <body>
-  <div class="wrapper">
-    <header>
-      <nav class="navbar">
-        <div class="brand">
-          <h2>J<span>H</span></h2>
+  <div class="contenedor">
+    <div class="wrapper">
+      <header>
+        <nav class="navbar">
+          <div class="brand">
+            <h2>J<span>H</span></h2>
+          </div>
+          <ul class="menu">
+            <li><a href="#"  class="active">Inicio</a></li>
+            <li><a href="#perfil">Quien Soy</a></li>
+            <li><a href="#portafolio">Portafolio</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </nav>
+      </header>
+      <main class="main">
+        <div class="info-content">
+          <h1>Yo soy <span>Juan</span> Esteban</h1>
+           <p>Estudiante de Ingeniera en Software </p>
+           <a download href="file:///C:/Users/juane/OneDrive/Documentos/HV101822309.pdf" target="_blank"><button class="download-cv">Descargar CV</button></a>
         </div>
-        <ul class="menu">
-          <li><a href="#"  class="active">Inicio</a></li>
-          <li><a href="#">Quien Soy</a></li>
-          <li><a href="#">Portafolio</a></li>
-          <li><a href="#">Contacto</a></li>
-        </ul>
-      </nav>
-    </header>
-    <main class="main">
-      <div class="info-content">
-        <h1>Yo soy <span>Juan</span> Esteban</h1>
-         <p>Estudiante de Ingeniera en Software </p>
-         <a download href="#"><button class="download-cv">Descargar CV</button></a>
-      </div>
-      <img src="./img/pexels-photo-1516680-removebg-preview.png" alt="">
-    </main>
-  </div>
-    <div class="about">
-      <img src="./img/about.png" alt="">
-      <div class="about-info">
-        <h2>Sobre mi</h2>
-        <div class="divider"></div>
-        <p>Soy un estudiante de ingeniería de software con experiencia en programación orientada a objetos, estructuras de datos y modelamiento de software. Me apasiona el desarrollo web y la resolución de problemas a través de la tecnología. He trabajado en proyectos académicos como el desarrollo de un sistema de compra de boletas en línea y en la implementación de algoritmos para la gestión de datos en Java. Me caracterizo por mi capacidad analítica, el trabajo en equipo y mi constante interés en aprender y aplicar nuevos conocimientos..</p>
-        <h3>Hablidades</h3>
-        <p>- Programación en Java, JavaScript, HTML, CSS
-        </p>
-        <p>- Desarrollo de software y modelamiento de sistemas
-        </p>
-        <p>- Aritmética binaria y estructuras de datos
-        </p>
-        <p>- Resolución de problemas y pensamiento lógico
-        </p>
-        <p>- Trabajo en equipo y gestión de proyectos académicos
-        </p>
-        <button class="download-cv">Leer más</button>
-      </div>
+        <img src="./img/pexels-photo-1516680-removebg-preview.png" alt="">
+      </main>
     </div>
-    <div class="portfolio">
-      <div class="portfolio-heading">
-        <h2>Mi Portafolio</h2>
-        <div class="divider"></div>
-      </div>
-      <div class="container">
-        <div class="card">
-          <div class="card__img">
-          </div>
-          <div class="card__title">
-            <h2>TuSorteos</h2>
-          </div>
-          <div class="card__proyect-links">
-            <a href="#">
-              <i class="fab fa-github"></i>
-            </a>
-            <a href="">
-              <i class="fas fa-globe-asia"></i>
-            </a>
-            <a href="">
-              <i class="fas fa-code"></i>
-            </a>
-          </div>
-          <div class="button-content">
-            <button class="project-details-button download-cv">
-              <a href="#">Detalle de Proyectos</a>
-            </button>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card__img">
-          </div>
-          <div class="card__title">
-            <h2>Descripcion de Proyectos</h2>
-          </div>
-          <div class="card__proyect-links">
-            <a href="#">
-              <i class="fab fa-github"></i>
-            </a>
-            <a href="">
-              <i class="fas fa-globe-asia"></i>
-            </a>
-            <a href="">
-              <i class="fas fa-code"></i>
-            </a>
-          </div>
-          <div class="button-content">
-            <button class="project-details-button download-cv">
-              <a href="#">Detalle de Proyectos</a>
-            </button>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card__img">
-          </div>
-          <div class="card__title">
-            <h2>Descripcion de Proyectos</h2>
-          </div>
-          <div class="card__proyect-links">
-            <a href="#">
-              <i class="fab fa-github"></i>
-            </a>
-            <a href="">
-              <i class="fas fa-globe-asia"></i>
-            </a>
-            <a href="">
-              <i class="fas fa-code"></i>
-            </a>
-          </div>
-          <div class="button-content">
-            <button class="project-details-button download-cv">
-              <a href="#">Detalle de Proyectos</a>
-            </button>
-          </div>
+      <div class="about" id="perfil">
+        <img src="./img/about.png" alt="">
+        <div class="about-info">
+          <h2>Sobre mi</h2>
+          <div class="divider"></div>
+          <p>Soy un estudiante de ingeniería de software con experiencia en programación orientada a objetos, estructuras de datos y modelamiento de software. Me apasiona el desarrollo web y la resolución de problemas a través de la tecnología. He trabajado en proyectos académicos como el desarrollo de un sistema de compra de boletas en línea y en la implementación de algoritmos para la gestión de datos en Java. Me caracterizo por mi capacidad analítica, el trabajo en equipo y mi constante interés en aprender y aplicar nuevos conocimientos..</p>
+          <h3>Hablidades</h3>
+          <p>- Programación en Java, JavaScript, HTML, CSS
+          </p>
+          <p>- Desarrollo de software y modelamiento de sistemas
+          </p>
+          <p>- Aritmética binaria y estructuras de datos
+          </p>
+          <p>- Resolución de problemas y pensamiento lógico
+          </p>
+          <p>- Trabajo en equipo y gestión de proyectos académicos
+          </p>
+          <button class="download-cv">Leer más</button>
         </div>
       </div>
-    </div>
+      <div class="portfolio" id="portafolio">
+        <div class="portfolio-heading">
+          <h2>Mi Portafolio</h2>
+          <div class="divider"></div>
+        </div>
+        <div class="container">
+          <div class="card">
+            <div class="card__img">
+            </div>
+            <div class="card__title">
+              <h2>TuSorteos</h2>
+            </div>
+            <div class="card__proyect-links">
+              <a href="https://github.com/Henao00" target="_blank">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="">
+                <i class="fas fa-globe-asia"></i>
+              </a>
+              <a href="">
+                <i class="fas fa-code"></i>
+              </a>
+            </div>
+            <div class="button-content">
+              <button class="project-details-button download-cv">
+                <a href="#">Detalle de Proyectos</a>
+              </button>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card__img">
+            </div>
+            <div class="card__title">
+              <h2>Descripcion de Proyectos</h2>
+            </div>
+            <div class="card__proyect-links">
+              <a href="https://github.com/Henao00" target="_blank">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="">
+                <i class="fas fa-globe-asia"></i>
+              </a>
+              <a href="">
+                <i class="fas fa-code"></i>
+              </a>
+            </div>
+            <div class="button-content">
+              <button class="project-details-button download-cv">
+                <a href="#">Detalle de Proyectos</a>
+              </button>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card__img">
+            </div>
+            <div class="card__title">
+              <h2>Descripcion de Proyectos</h2>
+            </div>
+            <div class="card__proyect-links">
+              <a href="https://github.com/Henao00" target="_blank">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="">
+                <i class="fas fa-globe-asia"></i>
+              </a>
+              <a href="">
+                <i class="fas fa-code"></i>
+              </a>
+            </div>
+            <div class="button-content">
+              <button class="project-details-button download-cv">
+                <a href="#">Detalle de Proyectos</a>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
   
-    <div class="contact-section">
-      <div class="contact-heading">
-        <h2>Estamos en contacto</h2>
-        <div class="divider"></div>
-      </div>
-      <div class="container-contact">
-        <img src="./img/img-opacity50.png" alt="">
-        <div class="contact-form">
-          <h4>Envíame un mensaje...</h4>
-          <form class="form-group">
-            <input type="text" placeholder="Nombre" class="input">
-            <input type="email" placeholder="Email" class="input">
-            <textarea name="message" placeholder="Deja tu mensaje aquí..."></textarea>
-            <button type="submit" class="btn-submit">Enviar mensaje</button>
-          </form>
+      <div class="contact-section" id="contacto">
+        <div class="contact-heading">
+          <h2>Estamos en contacto</h2>
+          <div class="divider"></div>
+        </div>
+        <div class="container-contact">
+          <img src="./img/img-opacity50.png" alt="">
+          <div class="contact-form">
+            <h4>Envíame un mensaje...</h4>
+            <form class="form-group"
+              action="https://formspree.io/f/xldgqlbq"
+              method="POST">          
+              <input type="text" placeholder="Nombre" class="input">
+              <input type="email" placeholder="Email" class="input">
+              <textarea name="message" placeholder="Deja tu mensaje aquí..."></textarea>
+              <button type="submit" class="btn-submit">Enviar mensaje</button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
   
-    <footer class="footer"> 
-      <div class="footer-content">
-        <h2>Juan Esteban Henao</h2>
-        <h5>Estudiante de Ingenieria en Software</h5>
-      </div>
-      <div class="sotial-networks">
-        <i class="fab fa-instagram"></i>
-        <i class="fab fa-linkedin"></i>
-        <i class="fab fa-twitter-square"></i>
-      </div>
-    </footer>
-  </body>
+      <footer class="footer"> 
+        <div class="footer-content">
+          <h2>Juan Esteban Henao</h2>
+          <h5>Estudiante de Ingenieria en Software</h5>
+        </div>
+        <div class="sotial-networks">
+          <a href="https://www.instagram.com/henao____/" target="_blank">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/juan-esteban-henao-manrique-15b558282 " target="_blank">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://x.com/Henao0_0" target="_blank">
+            <i class="fab fa-twitter-square"></i>
+          </a>         
+        </div>
+      </footer>
+  </div>  
+</body>
