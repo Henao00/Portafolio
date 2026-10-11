@@ -224,8 +224,9 @@ html.lenis, html.lenis body{ height:auto }
 /* ============================ HERO ============================ */
 .hero{ position:relative; isolation:isolate; overflow:hidden; border-radius:0 0 2rem 2rem; background:var(--hero-to) }
 .liquid{ position:absolute; inset:0; z-index:0; overflow:hidden; display:flex; align-items:center; justify-content:center }
-.liquid-stage{ position:relative; height:74%; aspect-ratio:825 / 1024; max-width:88% }
-.liquid-base{ position:absolute; inset:0; width:100%; height:100%; object-fit:contain; filter:drop-shadow(0 30px 60px rgba(0,0,0,.55)) }
+.liquid-stage{ position:relative; height:58%; aspect-ratio:825 / 1024; max-width:70%; max-height:38rem }
+.liquid-base{ position:absolute; inset:0; width:100%; height:100%; object-fit:contain; filter:drop-shadow(0 30px 60px rgba(0,0,0,.55));
+  -webkit-mask-image:linear-gradient(to bottom, transparent 0%, #000 9%); mask-image:linear-gradient(to bottom, transparent 0%, #000 9%) }
 .liquid-canvas{ position:absolute; inset:0; width:100%; height:100%; pointer-events:none }
 .hero-vignette{ position:absolute; inset:0; z-index:1; pointer-events:none;
   background:linear-gradient(to bottom, rgba(8,8,10,.62), transparent 45%, rgba(8,8,10,.78)) }
@@ -324,6 +325,8 @@ html.lenis, html.lenis body{ height:auto }
 .about-h2{ font-size:1.5rem; font-weight:500; line-height:1.35; letter-spacing:-.01em }
 @media (min-width:640px){ .about-h2{ font-size:1.875rem } }
 .about-muted{ color:var(--muted) }
+.about-body{ display:grid; gap:1rem; max-width:54ch; font-size:.95rem; line-height:1.7; color:rgba(242,241,239,.68) }
+@media (min-width:640px){ .about-body{ font-size:1rem } }
 .about-foot{ display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:1.5rem;
   border-top:1px solid var(--line); padding-top:1.5rem }
 .about-foot-label{ font-size:.875rem; color:rgba(242,241,239,.45) }
@@ -361,10 +364,10 @@ html.lenis, html.lenis body{ height:auto }
 .works-grid{ display:grid; grid-template-columns:1fr; gap:1.5rem }
 @media (min-width:768px){ .works-grid{ grid-template-columns:repeat(2,1fr) } }
 .pf-link{ display:block }
-.pf-card{ position:relative; min-height:22rem; overflow:hidden; border-radius:2rem; background:linear-gradient(165deg,#1c1c20,#101013); padding:1.5rem;
+.pf-card{ position:relative; min-height:24rem; overflow:hidden; border-radius:2rem; background:linear-gradient(165deg,#1c1c20,#101013); padding:1.5rem;
   color:#fff; box-shadow:0 0 0 1px rgba(255,255,255,.08);
   transition:transform .45s cubic-bezier(.2,.8,.2,1) }
-@media (min-width:640px){ .pf-card{ min-height:26rem; padding:2rem } }
+@media (min-width:640px){ .pf-card{ min-height:29rem; padding:2rem } }
 @media (hover:hover){ .pf-link:hover .pf-card{ transform:translateY(-8px) scale(1.012) } }
 .pf-meta{ display:flex; justify-content:space-between; font-size:.75rem; text-transform:uppercase; letter-spacing:.025em;
   color:rgba(255,255,255,.45) }
@@ -374,8 +377,8 @@ html.lenis, html.lenis body{ height:auto }
 @media (hover:hover){ .pf-link:hover .pf-badge{ transform:rotate(45deg) scale(1.08) } }
 .pf-watermark{ position:absolute; inset:0; display:grid; place-items:center; pointer-events:none }
 .pf-watermark-inner{ display:flex; align-items:flex-start }
-.pf-watermark .i{ font-size:4.5rem; color:rgba(255,255,255,.9) }
-.pf-watermark sup{ font-size:.75rem; color:rgba(255,255,255,.6) }
+.pf-watermark .i{ font-size:4.5rem; color:rgba(255,255,255,.16) }
+.pf-watermark sup{ font-size:.75rem; color:rgba(255,255,255,.16) }
 .pf-bottom{ position:absolute; inset-inline:1.5rem; bottom:1.5rem }
 @media (min-width:640px){ .pf-bottom{ inset-inline:2rem; bottom:2rem } }
 .pf-name{ font-size:1.5rem; font-weight:500; letter-spacing:-.01em }
@@ -530,7 +533,7 @@ textarea.field-input{ resize:none }
       <svg class="i" viewBox="0 0 48 48" fill="currentColor" aria-hidden="true"><path d="M24 2c2.2 13.8 7.9 19.6 22 22-14.1 2.4-19.8 8.2-22 22-2.2-13.8-7.9-19.6-22-22 14.1-2.4 19.8-8.2 22-22Z"/></svg>
       <span>Juan Esteban Henao</span>
     </div>
-    <p class="loader-tagline">Bold ideas, shipped with quiet precision.</p>
+    <p class="loader-tagline">I turn bold ideas into high-impact code.</p>
   </div>
   <div class="loader-progress">
     <div class="loader-track"><div class="loader-fill" id="loaderFill"></div></div>
@@ -599,9 +602,9 @@ textarea.field-input{ resize:none }
         </span>
 
         <h1 class="hero-h1" data-reveal="line" data-gate="ready" data-delay="250" data-stagger="120">
-          <span class="line-reveal"><span class="line-inner">Bold ideas,</span></span>
-          <span class="line-reveal"><span class="line-inner">shipped with</span></span>
-          <span class="line-reveal"><span class="line-inner">quiet precision</span></span>
+          <span class="line-reveal"><span class="line-inner">I turn bold ideas</span></span>
+          <span class="line-reveal"><span class="line-inner">into high-impact</span></span>
+          <span class="line-reveal"><span class="line-inner">code.</span></span>
         </h1>
 
         <div class="hero-rating" data-reveal="fade" data-gate="ready" data-delay="650">
@@ -694,6 +697,10 @@ textarea.field-input{ resize:none }
           <span class="line-reveal"><span class="line-inner">I help ambitious teams ship </span></span>
           <span class="line-reveal"><span class="line-inner about-muted">digital products, scalable systems, and the engineering that holds them together.</span></span>
         </h2>
+        <div class="about-body" data-reveal="rise" data-delay="120">
+          <p>I'm a software engineering student and developer based in Colombia, passionate about building technology that solves real problems. I work across mobile, web and backend — from a Flutter app that quotes insulation blocks on-site to a full-stack marketplace with escrow payments.</p>
+          <p>I care about clean, maintainable code, thoughtful interfaces and shipping things that actually work. I'm currently open to junior roles, freelance projects and collaborations where I can keep learning fast and delivering value.</p>
+        </div>
         <div class="about-foot" data-reveal="rise" data-delay="200">
           <div>
             <div class="about-foot-label">Find me online</div>
@@ -754,7 +761,7 @@ textarea.field-input{ resize:none }
               </span></div>
               <div class="pf-bottom">
                 <h3 class="pf-name">T&M Cotizador</h3>
-                <p class="pf-desc">A Flutter app that quotes roof-insulation blocks by area and volume, generates professional PDFs and works 100% offline.</p>
+                <p class="pf-desc">A Flutter (Dart) mobile app that quotes insulation blocks (porones) by area and volume, converts m² to m³ by thickness and exports professional PDF quotes — fully offline, with editable prices, quote history and local storage.</p>
                 <div class="pf-tags">
                   <span class="chip chip--light">Flutter</span>
                   <span class="chip chip--light">Dart</span>
@@ -776,11 +783,11 @@ textarea.field-input{ resize:none }
               </span></div>
               <div class="pf-bottom">
                 <h3 class="pf-name">TuContacto</h3>
-                <p class="pf-desc">A clean, dependency-free contact manager built with vanilla JavaScript.</p>
+                <p class="pf-desc">A cross-platform contacts app built with React Native (Expo) and Firebase — with authentication, a Firestore database and image storage, plus full CRUD in a native mobile UI.</p>
                 <div class="pf-tags">
-                  <span class="chip chip--light">JavaScript</span>
-                  <span class="chip chip--light">Web</span>
-                  <span class="chip chip--light">UI</span>
+                  <span class="chip chip--light">React Native</span>
+                  <span class="chip chip--light">Expo</span>
+                  <span class="chip chip--light">Firebase</span>
                 </div>
               </div>
             </article>
@@ -798,7 +805,7 @@ textarea.field-input{ resize:none }
               </span></div>
               <div class="pf-bottom">
                 <h3 class="pf-name">DirectMarket</h3>
-                <p class="pf-desc">A peer-to-peer marketplace with a hybrid escrow payment system and a unique 8-character release code. React, Express and PostgreSQL.</p>
+                <p class="pf-desc">A peer-to-peer marketplace with a hybrid escrow payment flow and a unique 8-character release code. React + Vite + Tailwind frontend, an Express API with Jest tests and PostgreSQL, orchestrated with Docker Compose.</p>
                 <div class="pf-tags">
                   <span class="chip chip--light">React</span>
                   <span class="chip chip--light">Node.js</span>
@@ -820,7 +827,7 @@ textarea.field-input{ resize:none }
               </span></div>
               <div class="pf-bottom">
                 <h3 class="pf-name">Ubux</h3>
-                <p class="pf-desc">A live web &amp; UX audit for a technology company, turning findings into concrete improvements on their site.</p>
+                <p class="pf-desc">A live web &amp; UX audit for Ubux, a technology company: I reviewed their key user flows, usability and performance, then turned the findings into prioritized, actionable improvements.</p>
                 <div class="pf-tags">
                   <span class="chip chip--light">UX</span>
                   <span class="chip chip--light">QA</span>
@@ -848,7 +855,7 @@ textarea.field-input{ resize:none }
             <div class="svc-row">
               <span class="svc-index">01</span>
               <h3 class="svc-title">Web Development</h3>
-              <p class="svc-desc">Scalable websites and web apps built to last.</p>
+              <p class="svc-desc">Fast, accessible and scalable websites and web apps with modern JavaScript, React and clean, maintainable code.</p>
               <span class="svc-badge"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
             </div>
           </a>
@@ -858,7 +865,7 @@ textarea.field-input{ resize:none }
             <div class="svc-row">
               <span class="svc-index">02</span>
               <h3 class="svc-title">UI/UX Design</h3>
-              <p class="svc-desc">Interfaces that feel effortless and look sharp.</p>
+              <p class="svc-desc">User-centered interfaces and design systems that feel effortless, look sharp and convert — from wireframe to polished product.</p>
               <span class="svc-badge"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
             </div>
           </a>
@@ -868,7 +875,7 @@ textarea.field-input{ resize:none }
             <div class="svc-row">
               <span class="svc-index">03</span>
               <h3 class="svc-title">Mobile Apps</h3>
-              <p class="svc-desc">Cross-platform iOS &amp; Android apps with Flutter.</p>
+              <p class="svc-desc">Cross-platform iOS and Android apps with Flutter and Dart, including offline-first storage, native integrations and store-ready builds.</p>
               <span class="svc-badge"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
             </div>
           </a>
@@ -878,7 +885,7 @@ textarea.field-input{ resize:none }
             <div class="svc-row">
               <span class="svc-index">04</span>
               <h3 class="svc-title">Backend &amp; APIs</h3>
-              <p class="svc-desc">APIs, databases and integrations that hold it together.</p>
+              <p class="svc-desc">REST APIs, databases and authentication with Node.js, Express, Python and PostgreSQL, plus automated testing and Docker-based deployment.</p>
               <span class="svc-badge"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
             </div>
           </a>
@@ -888,7 +895,7 @@ textarea.field-input{ resize:none }
             <div class="svc-row">
               <span class="svc-index">05</span>
               <h3 class="svc-title">Quality Assurance</h3>
-              <p class="svc-desc">Rigorous testing for flawless, confident releases.</p>
+              <p class="svc-desc">Automated unit and integration testing, manual QA and review processes that catch bugs before your users do.</p>
               <span class="svc-badge"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
             </div>
           </a>
@@ -898,7 +905,7 @@ textarea.field-input{ resize:none }
             <div class="svc-row">
               <span class="svc-index">06</span>
               <h3 class="svc-title">Consulting</h3>
-              <p class="svc-desc">Strategy and technical direction for ambitious teams.</p>
+              <p class="svc-desc">Technical direction, architecture decisions and code reviews to help small teams move faster with confidence.</p>
               <span class="svc-badge"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
             </div>
           </a>
@@ -908,7 +915,7 @@ textarea.field-input{ resize:none }
             <div class="svc-row">
               <span class="svc-index">07</span>
               <h3 class="svc-title">AI &amp; Agents</h3>
-              <p class="svc-desc">AI features and autonomous agents, shipped to production.</p>
+              <p class="svc-desc">AI-powered features and autonomous agents integrated into real products, from text tools to automation workflows.</p>
               <span class="svc-badge"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
             </div>
           </a>
@@ -927,20 +934,20 @@ textarea.field-input{ resize:none }
         </h2>
         <ul class="stats-grid">
           <li class="stat" data-reveal="stat" data-delay="0">
-            <div class="stat-num"><span data-count="150">0</span><span class="stat-suffix">+</span></div>
-            <div class="stat-label">Projects delivered</div>
+            <div class="stat-num"><span data-count="4">0</span></div>
+            <div class="stat-label">Featured projects</div>
           </li>
           <li class="stat" data-reveal="stat" data-delay="90">
-            <div class="stat-num"><span data-count="98">0</span><span class="stat-suffix">%</span></div>
-            <div class="stat-label">Client retention</div>
+            <div class="stat-num"><span data-count="7">0</span></div>
+            <div class="stat-label">Core technologies</div>
           </li>
           <li class="stat" data-reveal="stat" data-delay="180">
             <div class="stat-num"><span data-count="12">0</span></div>
-            <div class="stat-label">Years of craft</div>
+            <div class="stat-label">Public repositories</div>
           </li>
           <li class="stat" data-reveal="stat" data-delay="270">
-            <div class="stat-num"><span data-count="40">0</span><span class="stat-suffix">+</span></div>
-            <div class="stat-label">Team members</div>
+            <div class="stat-num"><span data-count="2025">0</span></div>
+            <div class="stat-label">Building since</div>
           </li>
         </ul>
       </div>
@@ -1631,7 +1638,7 @@ function exitLoader(){
 const I18N_ES = {
   'Skip to content': 'Saltar al contenido',
   'Loading': 'Cargando',
-  'Bold ideas, shipped with quiet precision.': 'Ideas audaces, enviadas con precisión silenciosa.',
+  'I turn bold ideas into high-impact code.': 'Transformo ideas audaces en código de alto impacto.',
   'Home': 'Inicio',
   'Work': 'Proyectos',
   'Services': 'Servicios',
@@ -1641,9 +1648,9 @@ const I18N_ES = {
   'Menu': 'Menú',
   'Open menu': 'Abrir menú',
   'Software Engineer': 'Ingeniero de Software',
-  'Bold ideas,': 'Ideas audaces,',
-  'shipped with': 'enviadas con',
-  'quiet precision': 'precisión silenciosa',
+  'I turn bold ideas': 'Transformo ideas',
+  'into high-impact': 'audaces en código',
+  'code.': 'de alto impacto.',
   'Available for work': 'Disponible para trabajar',
   "Let's Talk": 'Hablemos',
   'View Work': 'Ver proyectos',
@@ -1658,39 +1665,41 @@ const I18N_ES = {
   'I help ambitious teams ship': 'Ayudo a equipos ambiciosos a lanzar',
   'digital products, scalable systems, and the engineering that holds them together.': 'productos digitales, sistemas escalables y la ingeniería que los sostiene.',
   'Find me online': 'Encuéntrame en línea',
+  "I'm a software engineering student and developer based in Colombia, passionate about building technology that solves real problems. I work across mobile, web and backend — from a Flutter app that quotes insulation blocks on-site to a full-stack marketplace with escrow payments.": 'Soy estudiante de Ingeniería de Software y desarrollador radicado en Colombia, apasionado por crear tecnología que resuelve problemas reales. Trabajo en móvil, web y backend: desde una app en Flutter que cotiza bloques de icopor en obra hasta un marketplace full-stack con pagos en custodia.',
+  "I care about clean, maintainable code, thoughtful interfaces and shipping things that actually work. I'm currently open to junior roles, freelance projects and collaborations where I can keep learning fast and delivering value.": 'Me importan el código limpio y mantenible, las interfaces cuidadas y entregar cosas que de verdad funcionan. Hoy estoy abierto a roles junior, proyectos freelance y colaboraciones donde pueda seguir aprendiendo rápido y aportando valor.',
   'We': 'Yo',
   'Build': 'Construyo',
   'Better': 'Mejor',
   'Portfolio': 'Portafolio',
   'Selected Work': 'Proyectos seleccionados',
   'Mobile — 2026': 'Móvil — 2026',
-  'A Flutter app that quotes roof-insulation blocks by area and volume, generates professional PDFs and works 100% offline.': 'Una app en Flutter que cotiza bloques de icopor por área y volumen, genera PDFs profesionales y funciona 100% sin conexión.',
+  'A Flutter (Dart) mobile app that quotes insulation blocks (porones) by area and volume, converts m² to m³ by thickness and exports professional PDF quotes — fully offline, with editable prices, quote history and local storage.': 'App móvil en Flutter (Dart) que cotiza bloques de icopor para techos (porones) por área y volumen, convierte m² a m³ según el grosor y exporta cotizaciones profesionales en PDF, todo 100% sin conexión, con precios editables, historial y almacenamiento local.',
   'Offline': 'Sin conexión',
-  'A clean, dependency-free contact manager built with vanilla JavaScript.': 'Un gestor de contactos limpio y sin dependencias, construido con JavaScript puro.',
-  'A peer-to-peer marketplace with a hybrid escrow payment system and a unique 8-character release code. React, Express and PostgreSQL.': 'Un mercado entre usuarios con un sistema de pago híbrido en custodia (escrow) y un código único de liberación de 8 caracteres. React, Express y PostgreSQL.',
-  'A live web & UX audit for a technology company, turning findings into concrete improvements on their site.': 'Una auditoría web y de UX para una empresa de tecnología, que convierte los hallazgos en mejoras concretas de su sitio.',
+  'A cross-platform contacts app built with React Native (Expo) and Firebase — with authentication, a Firestore database and image storage, plus full CRUD in a native mobile UI.': 'App de contactos multiplataforma hecha con React Native (Expo) y Firebase: autenticación, base de datos Firestore y almacenamiento de imágenes, además de CRUD completo en una interfaz móvil nativa.',
+  'A peer-to-peer marketplace with a hybrid escrow payment flow and a unique 8-character release code. React + Vite + Tailwind frontend, an Express API with Jest tests and PostgreSQL, orchestrated with Docker Compose.': 'Marketplace entre usuarios con un flujo de pago híbrido en custodia (escrow) y un código único de liberación de 8 caracteres. Frontend en React + Vite + Tailwind, API en Express con pruebas Jest y PostgreSQL, orquestado con Docker Compose.',
+  'A live web & UX audit for Ubux, a technology company: I reviewed their key user flows, usability and performance, then turned the findings into prioritized, actionable improvements.': 'Auditoría web y de UX en vivo para Ubux, una empresa de tecnología: revisé sus flujos clave de usuario, usabilidad y rendimiento, y convertí los hallazgos en mejoras priorizadas y accionables.',
   'Audit — 2026': 'Auditoría — 2026',
   'What I do best': 'Lo que mejor hago',
   'Web Development': 'Desarrollo Web',
-  'Scalable websites and web apps built to last.': 'Sitios y aplicaciones web escalables hechos para durar.',
+  'Fast, accessible and scalable websites and web apps with modern JavaScript, React and clean, maintainable code.': 'Sitios y aplicaciones web rápidos, accesibles y escalables, con JavaScript moderno, React y código limpio y mantenible.',
   'UI/UX Design': 'Diseño UI/UX',
-  'Interfaces that feel effortless and look sharp.': 'Interfaces que se sienten naturales y se ven nítidas.',
+  'User-centered interfaces and design systems that feel effortless, look sharp and convert — from wireframe to polished product.': 'Interfaces centradas en el usuario y sistemas de diseño que se sienten naturales, se ven nítidos y convierten, desde el wireframe hasta el producto final.',
   'Mobile Apps': 'Aplicaciones móviles',
-  'Cross-platform iOS & Android apps with Flutter.': 'Aplicaciones multiplataforma iOS y Android con Flutter.',
+  'Cross-platform iOS and Android apps with Flutter and Dart, including offline-first storage, native integrations and store-ready builds.': 'Aplicaciones multiplataforma iOS y Android con Flutter y Dart, con almacenamiento offline-first, integraciones nativas y builds listos para tienda.',
   'Backend & APIs': 'Backend y APIs',
-  'APIs, databases and integrations that hold it together.': 'APIs, bases de datos e integraciones que lo sostienen.',
+  'REST APIs, databases and authentication with Node.js, Express, Python and PostgreSQL, plus automated testing and Docker-based deployment.': 'APIs REST, bases de datos y autenticación con Node.js, Express, Python y PostgreSQL, además de pruebas automatizadas y despliegue con Docker.',
   'Quality Assurance': 'Aseguramiento de la calidad',
-  'Rigorous testing for flawless, confident releases.': 'Pruebas rigurosas para lanzamientos seguros y sin fallos.',
+  'Automated unit and integration testing, manual QA and review processes that catch bugs before your users do.': 'Pruebas automatizadas unitarias y de integración, QA manual y procesos de revisión que detectan errores antes que tus usuarios.',
   'Consulting': 'Consultoría',
-  'Strategy and technical direction for ambitious teams.': 'Estrategia y dirección técnica para equipos ambiciosos.',
+  'Technical direction, architecture decisions and code reviews to help small teams move faster with confidence.': 'Dirección técnica, decisiones de arquitectura y revisiones de código para que equipos pequeños avancen más rápido y con confianza.',
   'AI & Agents': 'IA y Agentes',
-  'AI features and autonomous agents, shipped to production.': 'Funciones de IA y agentes autónomos, desplegados en producción.',
+  'AI-powered features and autonomous agents integrated into real products, from text tools to automation workflows.': 'Funciones con IA y agentes autónomos integrados en productos reales, desde herramientas de texto hasta flujos de automatización.',
   'By the numbers': 'En números',
   'Proof in the work, not the words.': 'Hechos, no palabras.',
-  'Projects delivered': 'Proyectos entregados',
-  'Client retention': 'Retención de clientes',
-  'Years of craft': 'Años de oficio',
-  'Team members': 'Miembros del equipo',
+  'Featured projects': 'Proyectos destacados',
+  'Core technologies': 'Tecnologías principales',
+  'Public repositories': 'Repositorios públicos',
+  'Building since': 'Construyendo desde',
   'Have a project in mind?': '¿Tienes un proyecto en mente?',
   "Let's get to work.": 'Pongámonos a trabajar.',
   'Start a project': 'Iniciar un proyecto',
