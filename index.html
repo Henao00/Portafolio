@@ -372,13 +372,13 @@ html.lenis, html.lenis body{ height:auto }
   color:#fff; box-shadow:0 0 0 1px rgba(255,255,255,.08);
   transition:transform .45s cubic-bezier(.2,.8,.2,1) }
 @media (min-width:640px){ .pf-card{ min-height:29rem; padding:2rem } }
-@media (hover:hover){ .pf-link:hover .pf-card{ transform:translateY(-8px) scale(1.012) } }
+@media (hover:hover){ .pf-link:hover .pf-card, .pf-card--app:hover{ transform:translateY(-8px) scale(1.012) } }
 .pf-meta{ display:flex; justify-content:space-between; font-size:.75rem; text-transform:uppercase; letter-spacing:.025em;
   color:rgba(255,255,255,.45) }
 .pf-badge{ width:2.75rem; height:2.75rem; display:grid; place-items:center; border-radius:9999px; background:rgba(255,255,255,.1);
   color:#fff; box-shadow:0 0 0 1px rgba(255,255,255,.15); font-size:.875rem; font-weight:500;
   transition:transform .4s cubic-bezier(.2,.8,.2,1) }
-@media (hover:hover){ .pf-link:hover .pf-badge{ transform:rotate(45deg) scale(1.08) } }
+@media (hover:hover){ .pf-link:hover .pf-badge, .pf-card--app:hover .pf-badge{ transform:rotate(45deg) scale(1.08) } }
 .pf-watermark{ position:absolute; inset:0; display:grid; place-items:center; pointer-events:none }
 .pf-watermark-inner{ display:flex; align-items:flex-start }
 .pf-watermark .i{ font-size:4.5rem; color:rgba(255,255,255,.16) }
@@ -389,6 +389,45 @@ html.lenis, html.lenis body{ height:auto }
 @media (min-width:640px){ .pf-name{ font-size:1.875rem } }
 .pf-desc{ margin-top:.5rem; max-width:28rem; font-size:.875rem; color:rgba(255,255,255,.55) }
 .pf-tags{ margin-top:1.25rem; display:flex; flex-wrap:wrap; gap:.5rem }
+
+/* App cards: phone screenshot preview */
+.pf-card--app{ display:flex; flex-direction:column; min-height:28rem }
+@media (min-width:640px){ .pf-card--app{ min-height:32rem } }
+.pf-card--app .pf-watermark{ display:none }
+.pf-card--app .pf-bottom{ position:static; inset-inline:auto; bottom:auto; margin-top:auto }
+.pf-card-link{ position:absolute; inset:0; z-index:1; border-radius:inherit }
+.pf-showcase{ position:relative; z-index:2; margin:1.5rem auto; display:flex; flex-direction:column; align-items:center; gap:.6rem;
+  padding:0; border:0; background:none; cursor:pointer; color:#fff }
+.pf-phone{ position:relative; display:block; width:5.25rem; border-radius:1.5rem; background:#050505; padding:.4rem;
+  box-shadow:0 22px 46px -16px rgba(0,0,0,.85), 0 0 0 1px rgba(255,255,255,.15);
+  transition:transform .45s cubic-bezier(.2,.8,.2,1) }
+@media (min-width:640px){ .pf-phone{ width:6rem } }
+.pf-phone::after{ content:''; position:absolute; top:.9rem; left:50%; transform:translateX(-50%);
+  width:2.2rem; height:.24rem; border-radius:9999px; background:rgba(255,255,255,.22) }
+.pf-phone img{ display:block; width:100%; height:auto; border-radius:1.1rem }
+@media (hover:hover){ .pf-showcase:hover .pf-phone{ transform:translateY(-6px) scale(1.03) } }
+.pf-showcase-count{ display:inline-flex; align-items:center; padding:.24rem .7rem; border-radius:9999px;
+  background:rgba(255,255,255,.12); box-shadow:0 0 0 1px rgba(255,255,255,.18);
+  font-size:.68rem; font-weight:600; letter-spacing:.05em; text-transform:uppercase; color:#fff; white-space:nowrap }
+
+/* App screens lightbox */
+.lightbox{ position:fixed; inset:0; z-index:120; display:flex; align-items:center; justify-content:center; padding:1.25rem;
+  background:rgba(0,0,0,.9); -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px);
+  opacity:0; visibility:hidden; pointer-events:none; transition:opacity .4s cubic-bezier(.22,1,.36,1), visibility .4s }
+.lightbox.is-open{ opacity:1; visibility:visible; pointer-events:auto }
+.lightbox-img{ max-height:82vh; max-width:min(92vw,30rem); width:auto; border-radius:1.5rem;
+  box-shadow:0 30px 70px -20px rgba(0,0,0,.9), 0 0 0 1px rgba(255,255,255,.12) }
+.lightbox-close{ position:absolute; right:1.25rem; top:1.25rem; z-index:2; width:2.75rem; height:2.75rem; display:grid; place-items:center;
+  border-radius:9999px; background:rgba(255,255,255,.1); color:#fff; box-shadow:0 0 0 1px rgba(255,255,255,.2); transition:background .3s }
+@media (hover:hover){ .lightbox-close:hover{ background:rgba(255,255,255,.22) } }
+.lightbox-nav{ position:absolute; top:50%; transform:translateY(-50%); z-index:2; width:3rem; height:3rem; display:grid; place-items:center;
+  border-radius:9999px; background:rgba(255,255,255,.1); color:#fff; box-shadow:0 0 0 1px rgba(255,255,255,.2); transition:background .3s }
+@media (hover:hover){ .lightbox-nav:hover{ background:rgba(255,255,255,.22) } }
+.lightbox-prev{ left:1.25rem }
+.lightbox-next{ right:1.25rem }
+.lightbox-count{ position:absolute; bottom:1.25rem; left:50%; transform:translateX(-50%);
+  font-size:.8rem; font-weight:500; letter-spacing:.05em; color:rgba(255,255,255,.8); font-variant-numeric:tabular-nums }
+@media (max-width:480px){ .lightbox-nav{ width:2.5rem; height:2.5rem } .lightbox-prev{ left:.5rem } .lightbox-next{ right:.5rem } }
 
 /* ============================ SERVICES ============================ */
 .services{ background:var(--background) }
@@ -768,47 +807,47 @@ textarea.field-input{ resize:none }
 
       <ul class="works-grid">
         <li data-reveal="card" data-delay="0">
-          <a class="pf-link" href="https://github.com/Henao00/T-M-Cotizador" target="_blank" rel="noopener noreferrer">
-            <article class="pf-card">
-              <div class="pf-meta"><span>Mobile — 2026</span>
-                <span class="pf-badge"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+          <article class="pf-card pf-card--app">
+            <a class="pf-card-link" href="https://github.com/Henao00/T-M-Cotizador" target="_blank" rel="noopener noreferrer" aria-label="T&amp;M Cotizador on GitHub"></a>
+            <div class="pf-meta"><span>Mobile — 2026</span>
+              <span class="pf-badge"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+            </div>
+            <button class="pf-showcase" type="button" data-gallery="tmc" aria-label="View screens">
+              <span class="pf-phone"><img src="Imagenes/T&amp;MCotizador/1.jpg" alt="" loading="lazy" /></span>
+              <span class="pf-showcase-count">8 screens</span>
+            </button>
+            <div class="pf-bottom">
+              <h3 class="pf-name">T&M Cotizador</h3>
+              <p class="pf-desc">A Flutter app built on a clean data model and business rules: it converts area to volume by thickness, manages an editable price catalog and quote history with local persistence, and generates professional PDF quotes — 100% offline.</p>
+              <div class="pf-tags">
+                <span class="chip chip--light">Flutter</span>
+                <span class="chip chip--light">Dart</span>
+                <span class="chip chip--light">Offline</span>
               </div>
-              <div class="pf-watermark"><span class="pf-watermark-inner">
-                <svg class="i" viewBox="0 0 48 48" fill="currentColor" aria-hidden="true"><path d="M24 2c2.2 13.8 7.9 19.6 22 22-14.1 2.4-19.8 8.2-22 22-2.2-13.8-7.9-19.6-22-22 14.1-2.4 19.8-8.2 22-22Z"/></svg><sup>&reg;</sup>
-              </span></div>
-              <div class="pf-bottom">
-                <h3 class="pf-name">T&M Cotizador</h3>
-                <p class="pf-desc">A Flutter app built on a clean data model and business rules: it converts area to volume by thickness, manages an editable price catalog and quote history with local persistence, and generates professional PDF quotes — 100% offline.</p>
-                <div class="pf-tags">
-                  <span class="chip chip--light">Flutter</span>
-                  <span class="chip chip--light">Dart</span>
-                  <span class="chip chip--light">Offline</span>
-                </div>
-              </div>
-            </article>
-          </a>
+            </div>
+          </article>
         </li>
 
         <li data-reveal="card" data-delay="90">
-          <a class="pf-link" href="https://github.com/Henao00/TuContacto-" target="_blank" rel="noopener noreferrer">
-            <article class="pf-card">
-              <div class="pf-meta"><span>Mobile — 2025</span>
-                <span class="pf-badge"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+          <article class="pf-card pf-card--app">
+            <a class="pf-card-link" href="https://github.com/Henao00/TuContacto-" target="_blank" rel="noopener noreferrer" aria-label="TuContacto on GitHub"></a>
+            <div class="pf-meta"><span>Mobile — 2025</span>
+              <span class="pf-badge"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+            </div>
+            <button class="pf-showcase" type="button" data-gallery="tucontacto" aria-label="View screens">
+              <span class="pf-phone"><img src="Imagenes/TuContacto/1763024385010.jpg" alt="" loading="lazy" /></span>
+              <span class="pf-showcase-count">8 screens</span>
+            </button>
+            <div class="pf-bottom">
+              <h3 class="pf-name">TuContacto</h3>
+              <p class="pf-desc">A contacts platform with a serverless Firebase backend: authentication, Firestore data modeling with security rules and indexes, and Cloud Storage for images — consumed by a native Expo app.</p>
+              <div class="pf-tags">
+                <span class="chip chip--light">Firebase</span>
+                <span class="chip chip--light">Firestore</span>
+                <span class="chip chip--light">Expo</span>
               </div>
-              <div class="pf-watermark"><span class="pf-watermark-inner">
-                <svg class="i" viewBox="0 0 48 48" fill="currentColor" aria-hidden="true"><path d="M24 2c2.2 13.8 7.9 19.6 22 22-14.1 2.4-19.8 8.2-22 22-2.2-13.8-7.9-19.6-22-22 14.1-2.4 19.8-8.2 22-22Z"/></svg><sup>&reg;</sup>
-              </span></div>
-              <div class="pf-bottom">
-                <h3 class="pf-name">TuContacto</h3>
-                <p class="pf-desc">A contacts platform with a serverless Firebase backend: authentication, Firestore data modeling with security rules and indexes, and Cloud Storage for images — consumed by a native Expo app.</p>
-                <div class="pf-tags">
-                  <span class="chip chip--light">Firebase</span>
-                  <span class="chip chip--light">Firestore</span>
-                  <span class="chip chip--light">Expo</span>
-                </div>
-              </div>
-            </article>
-          </a>
+            </div>
+          </article>
         </li>
 
         <li data-reveal="card" data-delay="180">
@@ -1121,6 +1160,21 @@ textarea.field-input{ resize:none }
       </button>
     </div>
   </div>
+</div>
+
+<!-- App screens lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">
+    <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 4l16 16M20 4 4 20"/></svg>
+  </button>
+  <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous">
+    <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+  </button>
+  <img class="lightbox-img" id="lightboxImg" alt="" />
+  <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next">
+    <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+  </button>
+  <div class="lightbox-count" id="lightboxCount"></div>
 </div>
 
 <script type="importmap">
@@ -1627,8 +1681,73 @@ document.addEventListener('click', (e) => {
 /* Escape closes overlays */
 addEventListener('keydown', (e) => {
   if(e.key !== 'Escape') return;
+  if(lightbox.classList.contains('is-open')){ closeLightbox(); return; }
   if(modal.classList.contains('is-open')){ closeModal(); return; }
   if(navMenu.classList.contains('is-open')) closeMenu();
+});
+
+/* ============================================================
+   APP SCREENS LIGHTBOX
+   ============================================================ */
+const GALLERIES = {
+  tmc: [
+    'Imagenes/T&MCotizador/1.jpg',
+    'Imagenes/T&MCotizador/1772679277965.jpg',
+    'Imagenes/T&MCotizador/1772679278083.jpg',
+    'Imagenes/T&MCotizador/1772679278181.jpg',
+    'Imagenes/T&MCotizador/1772679278305.jpg',
+    'Imagenes/T&MCotizador/1772679278361.jpg',
+    'Imagenes/T&MCotizador/1772679278580.jpg',
+    'Imagenes/T&MCotizador/1772679278670.jpg'
+  ],
+  tucontacto: [
+    'Imagenes/TuContacto/1763024385010.jpg',
+    'Imagenes/TuContacto/1763024385015.jpg',
+    'Imagenes/TuContacto/1763024385052.jpg',
+    'Imagenes/TuContacto/1763024385085.jpg',
+    'Imagenes/TuContacto/1763024385087.jpg',
+    'Imagenes/TuContacto/1763024385104.jpg',
+    'Imagenes/TuContacto/1763024385111.jpg',
+    'Imagenes/TuContacto/1763024385124.jpg'
+  ]
+};
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+const lightboxCount = document.getElementById('lightboxCount');
+let lbList = [];
+let lbIndex = 0;
+
+function renderLightbox(){
+  lightboxImg.src = lbList[lbIndex];
+  lightboxCount.textContent = (lbIndex + 1) + ' / ' + lbList.length;
+}
+function openLightbox(name){
+  lbList = GALLERIES[name] || [];
+  if(!lbList.length) return;
+  lbIndex = 0;
+  renderLightbox();
+  lightbox.classList.add('is-open');
+  lightbox.setAttribute('aria-hidden', 'false');
+  stopScroll();
+}
+function closeLightbox(){
+  lightbox.classList.remove('is-open');
+  lightbox.setAttribute('aria-hidden', 'true');
+  startScroll();
+}
+function lbStep(d){ if(!lbList.length) return; lbIndex = (lbIndex + d + lbList.length) % lbList.length; renderLightbox(); }
+
+document.querySelectorAll('[data-gallery]').forEach(btn => {
+  btn.addEventListener('click', () => openLightbox(btn.getAttribute('data-gallery')));
+});
+document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+document.getElementById('lightboxPrev').addEventListener('click', () => lbStep(-1));
+document.getElementById('lightboxNext').addEventListener('click', () => lbStep(1));
+lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLightbox(); });
+addEventListener('keydown', (e) => {
+  if(!lightbox.classList.contains('is-open')) return;
+  if(e.key === 'ArrowLeft') lbStep(-1);
+  else if(e.key === 'ArrowRight') lbStep(1);
 });
 
 /* ============================================================
@@ -1718,6 +1837,8 @@ const I18N_ES = {
   "Let's Talk": 'Hablemos',
   'View Work': 'Ver proyectos',
   'Download CV': 'Descargar CV',
+  'View screens': 'Ver capturas',
+  '8 screens': '8 capturas',
   'Previous': 'Anterior',
   'Next': 'Siguiente',
   'Tech I work with': 'Tecnologías que uso',
