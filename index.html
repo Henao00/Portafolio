@@ -522,6 +522,10 @@ textarea.field-input{ resize:none }
 .modal-success h2{ font-size:1.5rem; font-weight:600 }
 .modal-success p{ max-width:32ch; font-size:.875rem; color:rgba(242,241,239,.6) }
 .modal-hidden{ display:none }
+.field-input--error{ border-color:#ff6b6b }
+.field-input--error:focus{ border-color:#ff6b6b }
+.modal-error{ display:none; margin:-.125rem 0 0; font-size:.8125rem; color:#ff8a8a; line-height:1.45 }
+.modal-error.is-visible{ display:block }
 </style>
 </head>
 <body>
@@ -1081,16 +1085,17 @@ textarea.field-input{ resize:none }
       <form class="modal-form" id="requestForm" novalidate>
         <label class="field">
           <span class="field-label">Name</span>
-          <input class="field-input" type="text" name="name" required placeholder="Your name" />
+          <input class="field-input" type="text" name="name" id="fName" required placeholder="Your name" autocomplete="name" />
         </label>
         <label class="field">
           <span class="field-label">Email</span>
-          <input class="field-input" type="email" name="email" required placeholder="you@company.com" />
+          <input class="field-input" type="email" name="email" id="fEmail" required placeholder="you@company.com" autocomplete="email" />
         </label>
         <label class="field">
           <span class="field-label">Project</span>
-          <textarea class="field-input" name="project" rows="4" required placeholder="A few words about your project, timeline, and budget."></textarea>
+          <textarea class="field-input" name="project" id="fProject" rows="4" required placeholder="A few words about your project, timeline, and budget."></textarea>
         </label>
+        <p class="modal-error" id="modalError" role="alert"></p>
         <div class="modal-actions">
           <span class="modal-note">I reply within one business day.</span>
           <button class="pill pill--dark pill--arrow" type="submit" id="sendBtn">
@@ -1510,6 +1515,10 @@ const modalSuccess = document.getElementById('modalSuccess');
 const requestForm = document.getElementById('requestForm');
 const sendBtn = document.getElementById('sendBtn');
 const sendLabel = document.getElementById('sendLabel');
+const modalError = document.getElementById('modalError');
+const fName = document.getElementById('fName');
+const fEmail = document.getElementById('fEmail');
+const fProject = document.getElementById('fProject');
 
 function openModal(){ modal.classList.add('is-open'); modal.setAttribute('aria-hidden', 'false'); stopScroll(); }
 function closeModal(){
@@ -1525,6 +1534,8 @@ function sendingTextNow(){ return (SENDING_TEXT[currentLang()] || SENDING_TEXT.e
 
 function resetModal(){
   requestForm.reset();
+  modalError.classList.remove('is-visible');
+  requestForm.querySelectorAll('.field-input--error').forEach(i => i.classList.remove('field-input--error'));
   modalSuccess.classList.remove('is-visible');
   modalForm.classList.remove('modal-hidden');
   sendLabel.textContent = sendTextNow();
@@ -1535,16 +1546,58 @@ document.getElementById('successClose').addEventListener('click', closeModal);
 modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
 document.getElementById('modalPanel').addEventListener('click', (e) => e.stopPropagation());
 
-requestForm.addEventListener('submit', (e) => {
+const FIELD_ERROR_TEXT = { en: 'Please fill in all fields and use a valid email.', es: 'Completa todos los campos y usa un correo válido.' };
+const SEND_ERROR_TEXT = { en: "Couldn't send the message. Please try again, or email me directly at juaneshm3@gmail.com.", es: 'No se pudo enviar el mensaje. Inténtalo de nuevo o escríbeme a juaneshm3@gmail.com.' };
+const ACTIVATION_ERROR_TEXT = {
+  en: 'The form is awaiting activation. FormSubmit just emailed you an “Activate Form” link — click it, then send again.',
+  es: 'El formulario está pendiente de activación: FormSubmit te envió un correo con el enlace “Activate Form”. Haz clic en él y vuelve a enviar.'
+};
+function fieldErrorTextNow(){ return FIELD_ERROR_TEXT[currentLang()] || FIELD_ERROR_TEXT.en; }
+function sendErrorTextNow(){ return SEND_ERROR_TEXT[currentLang()] || SEND_ERROR_TEXT.en; }
+function activationErrorTextNow(){ return ACTIVATION_ERROR_TEXT[currentLang()] || ACTIVATION_ERROR_TEXT.en; }
+function toggleFieldError(input, on){ input.classList.toggle('field-input--error', on); }
+
+requestForm.addEventListener('submit', async (e) => {
   e.preventDefault();
+  modalError.classList.remove('is-visible');
+  const name = fName.value.trim();
+  const email = fEmail.value.trim();
+  const project = fProject.value.trim();
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  toggleFieldError(fName, !name);
+  toggleFieldError(fEmail, !emailOk);
+  toggleFieldError(fProject, !project);
+  if(!name || !emailOk || !project){
+    modalError.textContent = fieldErrorTextNow();
+    modalError.classList.add('is-visible');
+    const f = [fName, fEmail, fProject].find(i => i.classList.contains('field-input--error'));
+    if(f) f.focus();
+    return;
+  }
   sendLabel.textContent = sendingTextNow();
   sendBtn.disabled = true;
-  setTimeout(() => {
+  try {
+    const res = await fetch('https://formsubmit.co/ajax/juaneshm3@gmail.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ name, email, project, _subject: 'New project request — ' + name, _template: 'table' })
+    });
+    let data;
+    try { data = await res.json(); } catch(_){ data = {}; }
+    if(!res.ok || String(data.success) !== 'true'){
+      throw new Error(data.message || 'send failed');
+    }
     modalForm.classList.add('modal-hidden');
     modalSuccess.classList.add('is-visible');
+  } catch(_err){
+    const errMsg = (_err && _err.message) || '';
+    modalError.textContent = (/ctivation/i.test(errMsg)) ? activationErrorTextNow() : sendErrorTextNow();
+    modalError.classList.add('is-visible');
+    sendBtn.focus();
+  } finally {
     sendLabel.textContent = sendTextNow();
     sendBtn.disabled = false;
-  }, 700);
+  }
 });
 
 /* ============================================================
