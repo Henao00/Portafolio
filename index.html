@@ -576,6 +576,13 @@ textarea.field-input{ resize:none }
 .modal-error{ display:none; margin:-.125rem 0 0; font-size:.8125rem; color:#ff8a8a; line-height:1.45 }
 .modal-error.is-visible{ display:block }
 </style>
+<noscript><style>
+  /* No-JS fallback: reveal content and drop the loader instead of leaving a blank/blocked page. */
+  #pageLoader{ display:none !important }
+  [data-reveal]{ opacity:1 !important; transform:none !important }
+  [data-reveal] .line-inner{ opacity:1 !important; transform:none !important }
+  [data-reveal] .word{ opacity:1 !important; transform:none !important }
+</style></noscript>
 </head>
 <body>
 
@@ -1204,7 +1211,7 @@ textarea.field-input{ resize:none }
 </div>
 
 <script type="importmap">
-{ "imports": { "lenis": "https://unpkg.com/lenis@1.3.23/dist/lenis.mjs" } }
+{ "imports": { "lenis": "./vendor/lenis.mjs" } }
 </script>
 <script type="module">
 import Lenis from 'lenis';
@@ -1834,6 +1841,7 @@ function exitLoader(){
   }, () => {
     loader.style.transform = 'translateY(-100%)';
     ready = true;
+    window.__luxReady = true;
     startScroll();
     flushReadyReveals();
     loader.remove();
@@ -2007,6 +2015,32 @@ document.querySelectorAll('[data-year]').forEach(e => e.textContent = new Date()
 
 /* Restore persisted language */
 if(localStorage.getItem('lumora-lang') === 'es') applyLang('es');
+</script>
+
+<script>
+/* Failsafe: if the main module never signals ready (e.g. a failed import or a
+   browser without ES-module/import-map support), reveal the page so the visitor
+   is never stuck on the loading screen. No-op when the module works normally. */
+(function(){
+  function revealFallback(){
+    if(window.__luxReady || window.__luxFallback) return;
+    window.__luxFallback = true;
+    var l = document.getElementById('pageLoader');
+    if(l) l.remove();
+    var de = document.documentElement;
+    de.style.removeProperty('position');
+    de.style.removeProperty('overflow');
+    de.style.removeProperty('height');
+    var els = document.querySelectorAll('[data-reveal]');
+    for(var i = 0; i < els.length; i++){
+      els[i].classList.add('is-in');
+      var inner = els[i].querySelectorAll('.line-reveal,.word');
+      for(var j = 0; j < inner.length; j++) inner[j].classList.add('is-in');
+    }
+  }
+  if(document.readyState === 'complete') setTimeout(revealFallback, 6000);
+  else window.addEventListener('load', function(){ setTimeout(revealFallback, 6000); });
+})();
 </script>
 </body>
 </html>
