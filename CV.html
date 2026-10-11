@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juan Esteban Henao — Software Engineer | CV</title>
+<meta name="description" content="Curriculum Vitae — Juan Esteban Henao. Software Engineer focused on backend, APIs and AI integration.">
+<style>
+  :root{
+    --ink:#111111;
+    --muted:#4a4a4a;
+    --line:#d8d8d8;
+    --accent:#1f3a5f;
+    --paper:#ffffff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family: Arial, Helvetica, "Helvetica Neue", sans-serif;
+    font-size:10.5pt;
+    line-height:1.45;
+  }
+  .page{
+    max-width:820px;
+    margin:0 auto;
+    padding:34px 44px 40px;
+  }
+
+  /* ---------- header ---------- */
+  header{
+    border-bottom:2px solid var(--ink);
+    padding-bottom:14px;
+    margin-bottom:16px;
+  }
+  h1{
+    font-size:23pt;
+    letter-spacing:.5px;
+    line-height:1.1;
+  }
+  .jobtitle{
+    font-size:12pt;
+    color:var(--accent);
+    margin-top:4px;
+    font-weight:700;
+  }
+  .contact{
+    margin-top:8px;
+    font-size:9.5pt;
+    color:var(--ink);
+  }
+  .contact .sep{color:var(--muted);padding:0 4px;}
+  .contact a{color:inherit;text-decoration:none;}
+  .contact a:hover{text-decoration:underline;}
+
+  /* ---------- sections ---------- */
+  section{margin-top:14px;}
+  h2{
+    font-size:11pt;
+    text-transform:uppercase;
+    letter-spacing:1.2px;
+    color:var(--ink);
+    border-bottom:1px solid var(--line);
+    padding-bottom:3px;
+    margin-bottom:8px;
+  }
+  p{margin-bottom:6px;}
+  .summary{max-width:72ch;}
+
+  /* skills */
+  ul.skills{list-style:none;}
+  ul.skills li{margin-bottom:4px;}
+  ul.skills .cat{font-weight:700;color:var(--accent);}
+
+  /* projects */
+  .proj{margin-bottom:12px;}
+  .proj-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;}
+  .proj-name{font-weight:700;font-size:11pt;}
+  .proj-right{font-size:9.5pt;color:var(--muted);white-space:nowrap;}
+  .proj p{font-size:10pt;}
+  .proj .stack{font-size:9pt;color:var(--accent);margin-top:2px;}
+  .proj .links{font-size:9pt;}
+  .proj .links a{color:var(--accent);text-decoration:none;}
+  .proj .links a:hover{text-decoration:underline;}
+  .proj ul{margin:4px 0 0 0;padding-left:18px;font-size:10pt;}
+  .proj ul li{margin-bottom:2px;}
+
+  /* languages */
+  ul.lang{list-style:none;}
+  ul.lang li{margin-bottom:2px;}
+
+  /* controls */
+  .controls{
+    max-width:820px;margin:0 auto;padding:18px 44px 0;
+    display:flex;gap:8px;
+  }
+  .controls button{
+    font:inherit;font-size:9.5pt;
+    padding:6px 14px;border:1px solid var(--line);
+    background:var(--paper);color:var(--ink);border-radius:4px;cursor:pointer;
+  }
+  .controls button.active{background:var(--ink);color:#fff;border-color:var(--ink);}
+
+  /* ---------- print ---------- */
+  @media print{
+    body{font-size:10pt;}
+    .controls{display:none;}
+    .page{padding:0;max-width:none;}
+    a{color:inherit;}
+    section{margin-top:10px;}
+    .proj{margin-bottom:8px;}
+    @page{size:A4;margin:12mm;}
+  }
+</style>
+</head>
+<body>
+  <div class="controls" aria-label="Language selector">
+    <button id="btnEn" class="active" type="button" onclick="setLang('en')">English</button>
+    <button id="btnEs" type="button" onclick="setLang('es')">Español</button>
+  </div>
+
+  <div class="page">
+    <!-- ================= HEADER ================= -->
+    <header>
+      <h1>Juan Esteban Henao</h1>
+      <div class="jobtitle" data-en="Software Engineer — Backend · APIs · AI Integration"
+                          data-es="Ingeniero de Software — Backend · APIs · Integración de IA"></div>
+      <div class="contact">
+        <span data-en="Colombia · Remote worldwide" data-es="Colombia · Remoto en todo el mundo"></span>
+        <span class="sep">|</span>
+        <a href="mailto:juaneshm3@gmail.com">juaneshm3@gmail.com</a>
+        <span class="sep">|</span>
+        <a href="https://wa.me/573005784436" target="_blank" rel="noopener">+57 300 578 4436</a>
+        <span class="sep">|</span>
+        <a href="https://www.linkedin.com/in/juan-esteban-henao-manrique-15b558282/" target="_blank" rel="noopener">LinkedIn</a>
+        <span class="sep">·</span>
+        <a href="https://github.com/Henao00" target="_blank" rel="noopener">github.com/Henao00</a>
+        <span class="sep">·</span>
+        <a href="https://juanesteportafolio.vercel.app/" target="_blank" rel="noopener">juanesteportafolio.vercel.app</a>
+      </div>
+    </header>
+
+    <!-- ================= SUMMARY ================= -->
+    <section>
+      <h2 data-en="Summary" data-es="Perfil"></h2>
+      <p class="summary"
+         data-en="Backend-focused software developer based in Colombia. I build REST APIs and microservices with Python and FastAPI, model and query relational databases with SQL and PostgreSQL, and integrate AI capabilities into real products. I care about clean architecture, well-documented APIs, and reliable, scalable services. Building and shipping since 2025."
+         data-es="Desarrollador de software con enfoque en backend, con base en Colombia. Construyo APIs REST y microservicios con Python y FastAPI, modelo y consulto bases de datos relacionales con SQL y PostgreSQL, e integro capacidades de IA en productos reales. Me interesan la arquitectura limpia, las APIs bien documentadas y los servicios confiables y escalables. Construyendo y publicando desde 2025."></p>
+    </section>
+
+    <!-- ================= SKILLS ================= -->
+    <section>
+      <h2 data-en="Core Skills" data-es="Habilidades"></h2>
+      <ul class="skills">
+        <li><span class="cat" data-en="Backend:" data-es="Backend:"></span> Python, FastAPI, Express (Node.js), REST APIs, Microservices</li>
+        <li><span class="cat" data-en="Data:" data-es="Datos:"></span> PostgreSQL, SQL, data modeling, Firestore</li>
+        <li><span class="cat" data-en="AI:" data-es="IA:"></span> LLM integration, embeddings, AI-powered features</li>
+        <li><span class="cat">DevOps:</span> Docker, Git, CI/CD, deployments (Vercel)</li>
+        <li><span class="cat" data-en="Frontend:" data-es="Frontend:"></span> Flutter, Dart (mobile), React + Vite, Expo</li>
+        <li><span class="cat" data-en="Quality:" data-es="Calidad:"></span> Jest, unit/integration tests, code reviews, technical audits</li>
+      </ul>
+    </section>
+
+    <!-- ================= PROJECTS ================= -->
+    <section>
+      <h2 data-en="Selected Projects" data-es="Proyectos Destacados"></h2>
+
+      <div class="proj">
+        <div class="proj-head">
+          <span class="proj-name">DirectMarket</span>
+          <span class="proj-right" data-en="Backend · 2026" data-es="Backend · 2026"></span>
+        </div>
+        <p data-en="A marketplace whose core is an Express REST API over PostgreSQL: JWT authentication, product and transaction services, a hybrid escrow flow with unique 8-character release codes, Jest unit and integration tests, and Docker Compose — plus a React + Vite frontend."
+           data-es="Un marketplace cuyo núcleo es una API REST de Express sobre PostgreSQL: autenticación JWT, servicios de productos y transacciones, un flujo de escrow híbrido con códigos únicos de liberación de 8 caracteres, pruebas unitarias y de integración con Jest, y Docker Compose — además de un frontend con React + Vite."></p>
+        <div class="links"><span data-en="Code:" data-es="Código:"></span>
+          <a href="https://github.com/Henao00/DirectMarket" target="_blank" rel="noopener">github.com/Henao00/DirectMarket</a>
+        </div>
+        <div class="stack">Node.js · PostgreSQL · Docker</div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-head">
+          <span class="proj-name">TuContacto</span>
+          <span class="proj-right" data-en="Backend / Mobile · 2025" data-es="Backend / Móvil · 2025"></span>
+        </div>
+        <p data-en="A contacts platform with a serverless Firebase backend: authentication, Firestore data modeling with security rules and indexes, and Cloud Storage for images — consumed by a native Expo app."
+           data-es="Una plataforma de contactos con backend serverless de Firebase: autenticación, modelado de datos en Firestore con reglas de seguridad e índices, y Cloud Storage para imágenes — consumida por una app nativa en Expo."></p>
+        <div class="links"><span data-en="Code:" data-es="Código:"></span>
+          <a href="https://github.com/Henao00/TuContacto-" target="_blank" rel="noopener">github.com/Henao00/TuContacto-</a>
+        </div>
+        <div class="stack">Firebase · Firestore · Expo</div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-head">
+          <span class="proj-name">T&amp;M Cotizador</span>
+          <span class="proj-right" data-en="Mobile · 2026" data-es="Móvil · 2026"></span>
+        </div>
+        <p data-en="A Flutter app built on a clean data model and business rules: it converts area to volume by thickness, manages an editable price catalog and quote history with local persistence, and generates professional PDF quotes — 100% offline."
+           data-es="Una app Flutter construida sobre un modelo de datos y reglas de negocio claras: convierte área a volumen según el espesor, gestiona un catálogo de precios editable e historial de cotizaciones con persistencia local, y genera cotizaciones PDF profesionales — 100% offline."></p>
+        <div class="links"><span data-en="Code:" data-es="Código:"></span>
+          <a href="https://github.com/Henao00/T-M-Cotizador" target="_blank" rel="noopener">github.com/Henao00/T-M-Cotizador</a>
+        </div>
+        <div class="stack">Flutter · Dart · Offline</div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-head">
+          <span class="proj-name">Ubux — Web Audit</span>
+          <span class="proj-right" data-en="Audit · 2026" data-es="Auditoría · 2026"></span>
+        </div>
+        <p data-en="A technical web audit for Ubux, a technology company: I reviewed user flows, performance and accessibility, then turned the findings into prioritized, actionable improvements."
+           data-es="Una auditoría técnica web para Ubux, una empresa de tecnología: revisé flujos de usuario, rendimiento y accesibilidad, y convertí los hallazgos en mejoras priorizadas y accionables."></p>
+        <div class="links"><span data-en="Report:" data-es="Informe:"></span>
+          <a href="https://ubux-web.vercel.app/es" target="_blank" rel="noopener">ubux-web.vercel.app</a>
+        </div>
+        <div class="stack">QA · Performance · UX</div>
+      </div>
+    </section>
+
+    <!-- ================= LANGUAGES ================= -->
+    <section>
+      <h2 data-en="Languages" data-es="Idiomas"></h2>
+      <ul class="lang">
+        <li><strong>Español</strong> — <span data-en="Native" data-es="Nativo"></span></li>
+        <li><strong>English</strong> — <span data-en="Professional working proficiency" data-es="Competencia profesional"></span></li>
+      </ul>
+    </section>
+  </div>
+
+<script>
+  const KEY = 'cv-lang';
+  let current = localStorage.getItem(KEY) || 'en';
+
+  function applyLang(lang) {
+    current = lang;
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-en]').forEach(function (el) {
+      if (el.hasAttribute('data-' + lang)) el.textContent = el.getAttribute('data-' + lang);
+    });
+    document.getElementById('btnEn').classList.toggle('active', lang === 'en');
+    document.getElementById('btnEs').classList.toggle('active', lang === 'es');
+    try { localStorage.setItem(KEY, lang); } catch (e) {}
+  }
+  function setLang(lang) { applyLang(lang); }
+  applyLang(current);
+</script>
+</body>
+</html>
