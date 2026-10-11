@@ -6,6 +6,10 @@
 <title>Juan Esteban Henao — Software Engineer</title>
 <meta name="description" content="Juan Esteban Henao — Software Engineer building digital products, scalable systems, and the engineering that holds them together." />
 <meta name="theme-color" content="#0a0a0a" />
+<!-- Contact email is stored reversed so naive scrapers/crawlers don't harvest it; it is decoded at runtime and injected into mailto: links. -->
+<meta name="em" content="moc.liamg@3mhsenauj" />
+<!-- Cloudflare Turnstile site key (public). Leave empty to disable the captcha widget. -->
+<meta name="turnstile-site-key" content="" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -575,6 +579,8 @@ textarea.field-input{ resize:none }
 .field-input--error:focus{ border-color:#ff6b6b }
 .modal-error{ display:none; margin:-.125rem 0 0; font-size:.8125rem; color:#ff8a8a; line-height:1.45 }
 .modal-error.is-visible{ display:block }
+.turnstile-slot{ margin:-.125rem 0 0 }
+.turnstile-slot[hidden]{ display:none }
 </style>
 <noscript><style>
   /* No-JS fallback: reveal content and drop the loader instead of leaving a blank/blocked page. */
@@ -582,6 +588,8 @@ textarea.field-input{ resize:none }
   [data-reveal]{ opacity:1 !important; transform:none !important }
   [data-reveal] .line-inner{ opacity:1 !important; transform:none !important }
   [data-reveal] .word{ opacity:1 !important; transform:none !important }
+  /* JS-dependent email links are replaced by the entity-encoded fallback below. */
+  [data-em]{ display:none !important }
 </style></noscript>
 </head>
 <body>
@@ -704,7 +712,7 @@ textarea.field-input{ resize:none }
           <a class="social-chip social-chip--muted" href="https://www.instagram.com/henao____/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
             <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.15" fill="currentColor" stroke="none"/></svg>
           </a>
-          <a class="social-chip social-chip--muted" href="mailto:juaneshm3@gmail.com" aria-label="Email" title="Email">
+          <a class="social-chip social-chip--muted" href="#" data-em aria-label="Email" title="Email">
             <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="3"/><path d="m3.5 6.5 8.5 6 8.5-6"/></svg>
           </a>
           <a class="social-chip social-chip--muted" href="https://wa.me/573005784436" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp">
@@ -798,7 +806,7 @@ textarea.field-input{ resize:none }
               <a class="social-chip social-chip--muted" href="https://www.instagram.com/henao____/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
                 <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.15" fill="currentColor" stroke="none"/></svg>
               </a>
-              <a class="social-chip social-chip--muted" href="mailto:juaneshm3@gmail.com" aria-label="Email" title="Email">
+              <a class="social-chip social-chip--muted" href="#" data-em aria-label="Email" title="Email">
                 <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="3"/><path d="m3.5 6.5 8.5 6 8.5-6"/></svg>
               </a>
               <a class="social-chip social-chip--muted" href="https://wa.me/573005784436" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp">
@@ -1096,9 +1104,14 @@ textarea.field-input{ resize:none }
           <a class="alink alink--social" href="https://www.linkedin.com/in/juan-esteban-henao-manrique-15b558282/" target="_blank" rel="noopener noreferrer"><span class="alink-span">LinkedIn</span></a>
           <a class="alink alink--social" href="https://github.com/Henao00" target="_blank" rel="noopener noreferrer"><span class="alink-span">GitHub</span></a>
           <a class="alink alink--social" href="https://www.instagram.com/henao____/" target="_blank" rel="noopener noreferrer"><span class="alink-span">Instagram</span></a>
-          <a class="alink alink--social" href="mailto:juaneshm3@gmail.com"><span class="alink-span">Email</span></a>
+          <a class="alink alink--social" href="#" data-em><span class="alink-span">Email</span></a>
           <a class="alink alink--social" href="https://wa.me/573005784436" target="_blank" rel="noopener noreferrer"><span class="alink-span">WhatsApp</span></a>
         </div>
+        <noscript>
+          <div class="footer-links">
+            <a class="alink alink--social" href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;juaneshm3&#64;gmail&#46;com"><span class="alink-span">juaneshm3&#64;gmail&#46;com</span></a>
+          </div>
+        </noscript>
       </div>
     </div>
 
@@ -1170,6 +1183,7 @@ textarea.field-input{ resize:none }
           <span class="field-label">Project</span>
           <textarea class="field-input" name="project" id="fProject" rows="4" required placeholder="A few words about your project, timeline, and budget."></textarea>
         </label>
+        <div class="turnstile-slot" id="turnstileSlot" hidden></div>
         <p class="modal-error" id="modalError" role="alert"></p>
         <div class="modal-actions">
           <span class="modal-note">I reply within one business day.</span>
@@ -1597,6 +1611,89 @@ document.getElementById('menuOpen').addEventListener('click', openMenu);
 document.getElementById('menuClose').addEventListener('click', closeMenu);
 
 /* ============================================================
+   CONTACT EMAIL (obfuscated) + CAPTCHA (Cloudflare Turnstile)
+   ============================================================ */
+function contactEmail(){
+  const m = document.querySelector('meta[name="em"]');
+  const v = m ? (m.getAttribute('content') || '') : '';
+  return v.split('').reverse().join('');
+}
+(function applyContactEmail(){
+  const addr = contactEmail();
+  if(!addr) return;
+  document.querySelectorAll('[data-em]').forEach(a => a.setAttribute('href', 'mailto:' + addr));
+})();
+
+let turnstileToken = '';
+let turnstileWidgetId = null;
+function turnstileSiteKey(){
+  const m = document.querySelector('meta[name="turnstile-site-key"]');
+  return m ? (m.getAttribute('content') || '').trim() : '';
+}
+function resetTurnstile(){
+  if(window.turnstile && turnstileWidgetId !== null){
+    try { window.turnstile.reset(turnstileWidgetId); } catch(_){}
+  }
+  turnstileToken = '';
+}
+(function initTurnstile(){
+  const key = turnstileSiteKey();
+  const slot = document.getElementById('turnstileSlot');
+  if(!key || !slot) return; // no captcha configured: form still works
+  const s = document.createElement('script');
+  s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+  s.async = true; s.defer = true;
+  s.onload = function(){
+    if(!window.turnstile || !slot) return;
+    turnstileWidgetId = window.turnstile.render(slot, {
+      sitekey: key,
+      theme: 'dark',
+      size: 'flexible',
+      callback: function(tok){ turnstileToken = tok; },
+      'expired-callback': function(){ turnstileToken = ''; },
+      'error-callback': function(){ turnstileToken = ''; }
+    });
+    slot.hidden = false;
+  };
+  document.head.appendChild(s);
+})();
+
+/* Deliver the request: prefer the site's own serverless endpoint; fall back to
+   the legacy FormSubmit relay until the endpoint is configured (env vars set). */
+async function deliverRequest(p){
+  const json = JSON.stringify({ name: p.name, email: p.email, project: p.project, token: turnstileToken, lang: currentLang() });
+  let fallback = false;
+  try {
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: json
+    });
+    let data = {};
+    try { data = await res.json(); } catch(_){}
+    if(res.ok && data.ok) return { ok: true };
+    if(data.error === 'captcha' || res.status === 403) return { ok: false, error: 'captcha' };
+    if(res.status === 404 || res.status === 405 || res.status === 501 || res.status === 503 || data.error === 'not_configured') fallback = true;
+    else return { ok: false, error: data.error || ('http_' + res.status) };
+  } catch(_){
+    fallback = true; // endpoint unreachable → try the legacy relay
+  }
+  if(!fallback) return { ok: false, error: 'send_failed' };
+
+  const addr = contactEmail();
+  if(!addr) return { ok: false, error: 'send_failed' };
+  const res = await fetch('https://formsubmit.co/ajax/' + addr, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({ name: p.name, email: p.email, project: p.project, _subject: 'New project request — ' + p.name, _template: 'table' })
+  });
+  let data = {};
+  try { data = await res.json(); } catch(_){}
+  if(!res.ok || String(data.success) !== 'true') throw new Error(data.message || 'send failed');
+  return { ok: true };
+}
+
+/* ============================================================
    REQUEST MODAL
    ============================================================ */
 const modal = document.getElementById('requestModal');
@@ -1630,6 +1727,7 @@ function resetModal(){
   modalForm.classList.remove('modal-hidden');
   sendLabel.textContent = sendTextNow();
   sendBtn.disabled = false;
+  resetTurnstile();
 }
 document.getElementById('modalClose').addEventListener('click', closeModal);
 document.getElementById('successClose').addEventListener('click', closeModal);
@@ -1637,7 +1735,8 @@ modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); })
 document.getElementById('modalPanel').addEventListener('click', (e) => e.stopPropagation());
 
 const FIELD_ERROR_TEXT = { en: 'Please fill in all fields and use a valid email.', es: 'Completa todos los campos y usa un correo válido.' };
-const SEND_ERROR_TEXT = { en: "Couldn't send the message. Please try again, or email me directly at juaneshm3@gmail.com.", es: 'No se pudo enviar el mensaje. Inténtalo de nuevo o escríbeme a juaneshm3@gmail.com.' };
+const SEND_ERROR_TEXT = { en: "Couldn't send the message. Please try again, or email me directly at " + contactEmail() + ".", es: 'No se pudo enviar el mensaje. Inténtalo de nuevo o escríbeme a ' + contactEmail() + '.' };
+const CAPTCHA_ERROR_TEXT = { en: 'Please complete the verification below and try again.', es: 'Completa la verificación de abajo e inténtalo de nuevo.' };
 const ACTIVATION_ERROR_TEXT = {
   en: 'The form is awaiting activation. FormSubmit just emailed you an “Activate Form” link — click it, then send again.',
   es: 'El formulario está pendiente de activación: FormSubmit te envió un correo con el enlace “Activate Form”. Haz clic en él y vuelve a enviar.'
@@ -1645,6 +1744,7 @@ const ACTIVATION_ERROR_TEXT = {
 function fieldErrorTextNow(){ return FIELD_ERROR_TEXT[currentLang()] || FIELD_ERROR_TEXT.en; }
 function sendErrorTextNow(){ return SEND_ERROR_TEXT[currentLang()] || SEND_ERROR_TEXT.en; }
 function activationErrorTextNow(){ return ACTIVATION_ERROR_TEXT[currentLang()] || ACTIVATION_ERROR_TEXT.en; }
+function captchaErrorTextNow(){ return CAPTCHA_ERROR_TEXT[currentLang()] || CAPTCHA_ERROR_TEXT.en; }
 function toggleFieldError(input, on){ input.classList.toggle('field-input--error', on); }
 
 requestForm.addEventListener('submit', async (e) => {
@@ -1667,18 +1767,16 @@ requestForm.addEventListener('submit', async (e) => {
   sendLabel.textContent = sendingTextNow();
   sendBtn.disabled = true;
   try {
-    const res = await fetch('https://formsubmit.co/ajax/juaneshm3@gmail.com', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ name, email, project, _subject: 'New project request — ' + name, _template: 'table' })
-    });
-    let data;
-    try { data = await res.json(); } catch(_){ data = {}; }
-    if(!res.ok || String(data.success) !== 'true'){
-      throw new Error(data.message || 'send failed');
+    const result = await deliverRequest({ name, email, project });
+    if(result.ok){
+      modalForm.classList.add('modal-hidden');
+      modalSuccess.classList.add('is-visible');
+    } else {
+      const errMsg = result.error || '';
+      modalError.textContent = (/captcha/i.test(errMsg)) ? captchaErrorTextNow() : sendErrorTextNow();
+      modalError.classList.add('is-visible');
+      sendBtn.focus();
     }
-    modalForm.classList.add('modal-hidden');
-    modalSuccess.classList.add('is-visible');
   } catch(_err){
     const errMsg = (_err && _err.message) || '';
     modalError.textContent = (/ctivation/i.test(errMsg)) ? activationErrorTextNow() : sendErrorTextNow();
