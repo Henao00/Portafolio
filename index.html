@@ -327,6 +327,8 @@ html.lenis, html.lenis body{ height:auto }
 .about-muted{ color:var(--muted) }
 .about-body{ display:grid; gap:1rem; max-width:54ch; font-size:.95rem; line-height:1.7; color:rgba(242,241,239,.68) }
 @media (min-width:640px){ .about-body{ font-size:1rem } }
+.about-role{ font-size:.9rem; font-weight:600; line-height:1.7; color:var(--accent) }
+@media (min-width:640px){ .about-role{ font-size:.95rem } }
 .about-foot{ display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:1.5rem;
   border-top:1px solid var(--line); padding-top:1.5rem }
 .about-foot-label{ font-size:.875rem; color:rgba(242,241,239,.45) }
@@ -698,8 +700,9 @@ textarea.field-input{ resize:none }
           <span class="line-reveal"><span class="line-inner about-muted">digital products, scalable systems, and the engineering that holds them together.</span></span>
         </h2>
         <div class="about-body" data-reveal="rise" data-delay="120">
-          <p>I'm a software engineering student and developer based in Colombia, passionate about building technology that solves real problems. I work across mobile, web and backend — from a Flutter app that quotes insulation blocks on-site to a full-stack marketplace with escrow payments.</p>
-          <p>I care about clean, maintainable code, thoughtful interfaces and shipping things that actually work. I'm currently open to junior roles, freelance projects and collaborations where I can keep learning fast and delivering value.</p>
+          <p class="about-role">Software Developer | Python, SQL, FastAPI | PostgreSQL | APIs &amp; Microservices | AI Integration</p>
+          <p>I'm a software developer based in Colombia, focused on backend engineering. I build REST APIs and microservices with Python and FastAPI, model and query relational databases with SQL and PostgreSQL, and integrate AI into real products.</p>
+          <p>I care about clean architecture, well-documented APIs and reliable, scalable services — turning complex problems into simple, maintainable solutions.</p>
         </div>
         <div class="about-foot" data-reveal="rise" data-delay="200">
           <div>
@@ -1665,8 +1668,9 @@ const I18N_ES = {
   'I help ambitious teams ship': 'Ayudo a equipos ambiciosos a lanzar',
   'digital products, scalable systems, and the engineering that holds them together.': 'productos digitales, sistemas escalables y la ingeniería que los sostiene.',
   'Find me online': 'Encuéntrame en línea',
-  "I'm a software engineering student and developer based in Colombia, passionate about building technology that solves real problems. I work across mobile, web and backend — from a Flutter app that quotes insulation blocks on-site to a full-stack marketplace with escrow payments.": 'Soy estudiante de Ingeniería de Software y desarrollador radicado en Colombia, apasionado por crear tecnología que resuelve problemas reales. Trabajo en móvil, web y backend: desde una app en Flutter que cotiza bloques de icopor en obra hasta un marketplace full-stack con pagos en custodia.',
-  "I care about clean, maintainable code, thoughtful interfaces and shipping things that actually work. I'm currently open to junior roles, freelance projects and collaborations where I can keep learning fast and delivering value.": 'Me importan el código limpio y mantenible, las interfaces cuidadas y entregar cosas que de verdad funcionan. Hoy estoy abierto a roles junior, proyectos freelance y colaboraciones donde pueda seguir aprendiendo rápido y aportando valor.',
+  'Software Developer | Python, SQL, FastAPI | PostgreSQL | APIs & Microservices | AI Integration': 'Desarrollador de Software | Python, SQL, FastAPI | PostgreSQL | APIs & Microservices | AI Integration',
+  "I'm a software developer based in Colombia, focused on backend engineering. I build REST APIs and microservices with Python and FastAPI, model and query relational databases with SQL and PostgreSQL, and integrate AI into real products.": 'Soy desarrollador de software radicado en Colombia, enfocado en backend. Construyo APIs REST y microservicios con Python y FastAPI, modelo y consulto bases de datos relacionales con SQL y PostgreSQL, e integro IA en productos reales.',
+  'I care about clean architecture, well-documented APIs and reliable, scalable services — turning complex problems into simple, maintainable solutions.': 'Me importan la arquitectura limpia, las APIs bien documentadas y los servicios fiables y escalables: convierto problemas complejos en soluciones simples y mantenibles.',
   'We': 'Yo',
   'Build': 'Construyo',
   'Better': 'Mejor',
