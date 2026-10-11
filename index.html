@@ -595,7 +595,7 @@ textarea.field-input{ resize:none }
   <section class="hero" id="home">
     <div class="liquid" id="liquid">
       <div class="liquid-stage" id="liquidStage">
-        <img class="liquid-base" src="Imagenes/perfil.png?v=3" alt="Juan Esteban Henao" fetchpriority="high" />
+        <img class="liquid-base" src="Imagenes/perfil.png?v=4" alt="Juan Esteban Henao" fetchpriority="high" />
         <canvas class="liquid-canvas" id="liquidCanvas" aria-hidden="true"></canvas>
       </div>
     </div>
@@ -1306,8 +1306,8 @@ setInterval(updateClock, 1000);
   const ctx = canvas.getContext('2d');
 
   // Mapping: base (always visible / LCP) = perfil.png (transparent), brush paint (revealed on hover) = perfilgafas.png (transparent)
-  const beforeSrc = 'Imagenes/perfil.png?v=3';
-  const afterSrc  = 'Imagenes/perfilgafas.png?v=3';
+  const beforeSrc = 'Imagenes/perfil.png?v=4';
+  const afterSrc  = 'Imagenes/perfilgafas.png?v=4';
 
   const BRUSH_RADIUS = 143;
   const DECAY = 0.016;
@@ -1336,10 +1336,8 @@ setInterval(updateClock, 1000);
     const W = cover.width, H = cover.height;
     const s = Math.min(W / img.naturalWidth, H / img.naturalHeight);
     const dw = img.naturalWidth * s, dh = img.naturalHeight * s;
-    // Alinea el rostro de perfilgafas (contenido en y=4) con perfil.png (contenido en y=25)
-    const ALIGN = 21;
     coverCtx.clearRect(0, 0, W, H);
-    coverCtx.drawImage(img, (W - dw) / 2, (H - dh) / 2 + ALIGN * s, dw, dh);
+    coverCtx.drawImage(img, (W - dw) / 2, (H - dh) / 2, dw, dh);
   }
 
   function measure(){
