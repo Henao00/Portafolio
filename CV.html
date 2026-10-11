@@ -103,14 +103,17 @@
   .controls button.active{background:var(--ink);color:#fff;border-color:var(--ink);}
 
   /* ---------- print ---------- */
+  @page{ size:A4; margin:11mm; }
   @media print{
-    body{font-size:10pt;}
+    body{ font-size:9.5pt; line-height:1.35; }
     .controls{display:none;}
     .page{padding:0;max-width:none;}
     a{color:inherit;}
-    section{margin-top:10px;}
-    .proj{margin-bottom:8px;}
-    @page{size:A4;margin:12mm;}
+    h1{font-size:20pt;}
+    header{padding-bottom:10px;margin-bottom:12px;}
+    section{margin-top:8px;}
+    .proj{margin-bottom:6px;}
+    .proj p{font-size:9.5pt;}
   }
 </style>
 </head>
@@ -231,7 +234,8 @@
 
 <script>
   const KEY = 'cv-lang';
-  let current = localStorage.getItem(KEY) || 'en';
+  const qlang = new URLSearchParams(location.search).get('lang');
+  let current = (qlang === 'es' || qlang === 'en') ? qlang : (localStorage.getItem(KEY) || 'en');
 
   function applyLang(lang) {
     current = lang;
