@@ -182,8 +182,8 @@ setInterval(updateClock, 1000);
   const ctx = canvas.getContext('2d');
 
   // Mapping: base (always visible / LCP) = perfil.png (transparent), brush paint (revealed on hover) = perfilgafas.png (transparent)
-  const beforeSrc = 'Imagenes/perfil.png?v=4';
-  const afterSrc  = 'Imagenes/perfilgafas.png?v=4';
+  const beforeSrc = 'Imagenes/perfil.webp?v=1';
+  const afterSrc  = 'Imagenes/perfilgafas.webp?v=1';
 
   const BRUSH_RADIUS = 143;
   const DECAY = 0.016;
@@ -593,24 +593,24 @@ addEventListener('keydown', (e) => {
    ============================================================ */
 const GALLERIES = {
   tmc: [
-    'Imagenes/T&MCotizador/a1.jpg',
-    'Imagenes/T&MCotizador/a2.jpg',
-    'Imagenes/T&MCotizador/a3.jpg',
-    'Imagenes/T&MCotizador/a4.jpg',
-    'Imagenes/T&MCotizador/a5.jpg',
-    'Imagenes/T&MCotizador/a6.jpg',
-    'Imagenes/T&MCotizador/a7.jpg',
-    'Imagenes/T&MCotizador/a8.jpg'
+    'Imagenes/T&MCotizador/a1.webp',
+    'Imagenes/T&MCotizador/a2.webp',
+    'Imagenes/T&MCotizador/a3.webp',
+    'Imagenes/T&MCotizador/a4.webp',
+    'Imagenes/T&MCotizador/a5.webp',
+    'Imagenes/T&MCotizador/a6.webp',
+    'Imagenes/T&MCotizador/a7.webp',
+    'Imagenes/T&MCotizador/a8.webp'
   ],
   tucontacto: [
-    'Imagenes/TuContacto/b1.jpg',
-    'Imagenes/TuContacto/b2.jpg',
-    'Imagenes/TuContacto/b3.jpg',
-    'Imagenes/TuContacto/b4.jpg',
-    'Imagenes/TuContacto/b5.jpg',
-    'Imagenes/TuContacto/b6.jpg',
-    'Imagenes/TuContacto/b7.jpg',
-    'Imagenes/TuContacto/b8.jpg'
+    'Imagenes/TuContacto/b1.webp',
+    'Imagenes/TuContacto/b2.webp',
+    'Imagenes/TuContacto/b3.webp',
+    'Imagenes/TuContacto/b4.webp',
+    'Imagenes/TuContacto/b5.webp',
+    'Imagenes/TuContacto/b6.webp',
+    'Imagenes/TuContacto/b7.webp',
+    'Imagenes/TuContacto/b8.webp'
   ]
 };
 const lightbox = document.getElementById('lightbox');
