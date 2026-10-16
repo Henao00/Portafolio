@@ -181,9 +181,9 @@ setInterval(updateClock, 1000);
   }
   const ctx = canvas.getContext('2d');
 
-  // Mapping: base (always visible / LCP) = perfil.png (transparent), brush paint (revealed on hover) = perfilgafas.png (transparent)
+  // Mapping: base (always visible / LCP) = perfil.webp (transparent), brush paint (revealed on hover) = perfilgafas.webp (transparent)
   const beforeSrc = 'Imagenes/perfil.webp?v=1';
-  const afterSrc  = 'Imagenes/perfilgafas.webp?v=1';
+  const afterSrc  = 'Imagenes/perfilgafas.webp?v=2';
 
   const BRUSH_RADIUS = 143;
   const DECAY = 0.016;
